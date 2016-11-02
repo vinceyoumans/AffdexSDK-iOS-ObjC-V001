@@ -21,6 +21,13 @@
 // You will want to do something with the face (or faces) found.
 - (void)processedImageReady:(AFDXDetector *)detector image:(UIImage *)image faces:(NSDictionary *)faces atTime:(NSTimeInterval)time;
 {
+    //  a new strange issue.  I have updated my xCODE:Version 8.1 (8B62)   iOS on iPHONE 6s: 10.1.1
+    // there is a new behavior that I do not like.  Before upgrade, if face was out of frame, the
+    // Variance would goto 0 or NA.  Now, the Variance just does not update, and remains what it  was before.
+    // Need to find a method that fires when face is out of frame so the values can be updated to 0
+    // or face return that face is not available.
+    // I will work on this next week, but perhaps I can get a comment on this?
+    
     // iterate on the values of the faces dictionary
     for (AFDXFace *face in [faces allValues])
     {
